@@ -1129,8 +1129,8 @@ body:hover .cursor-dot {
 @media (max-width: 768px) {
     .hero-section {
         padding-bottom: 80px;
-        padding-top: 80px;
-        /* Reduced to bring image closer */
+        padding-top: 60px;
+        /* Aggressively reduced */
     }
 
     .navbar {
