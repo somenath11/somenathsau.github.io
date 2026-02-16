@@ -40,7 +40,7 @@ const portfolioData = {
             title: "Master of Computer Applications (MCA)",
             institution: "KIIT University, BBSR",
             year: "2024",
-            grade: "CGPA: 7.9", /* Update with actual score */
+            grade: "CGPA: 7.83", /* Update with actual score */
             description: "Specializing in Data Science and Cloud Computing. Graduated with honors.",
             credentialLink: "https://drive.google.com/file/d/1TSnZ40uAztN65L_6KxdvZ3E9p1kb20nx/view?usp=drive_link"
         },
@@ -161,4 +161,5 @@ const portfolioData = {
         }
     ]
 };
+
 
