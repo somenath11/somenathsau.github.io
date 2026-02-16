@@ -386,9 +386,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     behavior: 'smooth'
                 });
 
-                // Update URL without Hash (e.g., #about -> about)
-                const cleanName = targetId.substring(1);
-                history.pushState(null, null, cleanName);
+                // Update URL to show ONLY domain (remove hash and path)
+                history.replaceState(null, null, ' ');
             }
         });
     });
