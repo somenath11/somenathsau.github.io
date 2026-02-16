@@ -13,7 +13,7 @@ const portfolioData = {
     // Social Links
     socialLinks: {
         linkedin: "https://www.linkedin.com/in/somenathsau/",
-        github: "https://github.com/somenath11",
+        github: "https://github.com/somenathsau/",
         email: "mailto:somenathsau@gmail.com"
     },
 
@@ -42,7 +42,7 @@ const portfolioData = {
             year: "2024",
             grade: "CGPA: 7.9", /* Update with actual score */
             description: "Specializing in Data Science and Cloud Computing. Graduated with honors.",
-            credentialLink: "#"
+            credentialLink: "https://drive.google.com/file/d/1TSnZ40uAztN65L_6KxdvZ3E9p1kb20nx/view?usp=drive_link"
         },
         {
             title: "Bachelor of Computer Application (BCA)",
@@ -50,7 +50,7 @@ const portfolioData = {
             year: "2021",
             grade: "CGPA: 7.47", /* Update with actual score */
             description: "Major in Computer Science. Foundational knowledge in programming and database management.",
-            credentialLink: "#"
+            credentialLink: "https://drive.google.com/file/d/176k0TkTn23BIiwMioxoJQnHkLW51Ow8-/view?usp=drive_link"
         },
         {
             title: "+2 Science",
@@ -161,3 +161,4 @@ const portfolioData = {
         }
     ]
 };
+
