@@ -372,6 +372,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- SMOOTH SCROLL & CLEAN URLS ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Smooth Scroll
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Update URL without Hash (e.g., #about -> about)
+                const cleanName = targetId.substring(1);
+                history.pushState(null, null, cleanName);
+            }
+        });
+    });
+
 });
 
 // Typewriter Effect for Name
