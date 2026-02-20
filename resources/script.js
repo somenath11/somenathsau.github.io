@@ -3,12 +3,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- DYNAMIC CONTENT RENDERING ---
 
     // 1. Render Hero Section
-    document.getElementById('heroName').textContent = portfolioData.name;
-    document.getElementById('heroRole').textContent = portfolioData.role;
-    document.getElementById('heroSubtitle').textContent = portfolioData.subtitle;
+    const greetingEl = document.querySelector('.greeting');
+    if (greetingEl) greetingEl.innerHTML = "Hey there!, I'm-";
 
-    const heroImage = document.getElementById('heroImage');
-    if (heroImage) heroImage.src = portfolioData.heroImage;
+    document.getElementById('heroName').textContent = portfolioData.name;
+
+    // Combine Role and Subtitle for the "Software Engineer. A passionate..." effect
+    // We will use heroRole for the Bold Title and heroSubtitle for the description
+    // Assuming portfolioData.role is the Title and .subtitle is the description.
+    const heroRoleEl = document.getElementById('heroRole');
+    const heroSubtitleEl = document.getElementById('heroSubtitle');
+
+    // Clear first
+    heroRoleEl.innerHTML = '';
+    heroSubtitleEl.innerHTML = '';
+
+    // Typewriter effect for role
+    const typewriterText = "Cloud & Data Engineer";
+    let charIndex = 0;
+    heroRoleEl.innerHTML = '<span class="typewriter-text"></span><span class="typewriter-cursor">|</span>';
+    const typewriterSpan = heroRoleEl.querySelector('.typewriter-text');
+    function typeWriter() {
+        if (charIndex < typewriterText.length) {
+            typewriterSpan.textContent += typewriterText.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeWriter, 70);
+        } else {
+            // Blink cursor after done
+            heroRoleEl.querySelector('.typewriter-cursor').classList.add('blink');
+        }
+    }
+    typeWriter();
+
+    heroSubtitleEl.textContent = portfolioData.subtitle;
+
+    // Hero Image Removed
 
     // Update both resume buttons
     const heroResumeBtn = document.getElementById('heroResumeBtn');
@@ -16,39 +45,53 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroResumeBtn) heroResumeBtn.href = portfolioData.resumeLink;
     if (contactResumeBtn) contactResumeBtn.href = portfolioData.resumeLink;
 
-    // Render Hero Socials
+    // Render Hero Socials (Buttons)
     const heroSocials = document.getElementById('heroSocials');
     if (heroSocials) {
         const { linkedin, github, email } = portfolioData.socialLinks;
+        // Reference uses X, Github, Email. We use LinkedIn, Github, Email.
         heroSocials.innerHTML = `
-            <a href="${linkedin}" target="_blank" class="social-icon"><i data-lucide="linkedin"></i></a>
-            <a href="${github}" target="_blank" class="social-icon"><i data-lucide="github"></i></a>
-            <a href="${email}" class="social-icon"><i data-lucide="mail"></i></a>
+            <a href="${linkedin}" target="_blank" class="social-pill linkedin">
+                <span class="icon-container"><i data-lucide="linkedin"></i></span>
+                <span class="social-label">LinkedIn</span>
+            </a>
+            <a href="${github}" target="_blank" class="social-pill github">
+                <span class="icon-container"><i data-lucide="github"></i></span>
+                <span class="social-label">Github</span>
+            </a>
+            <a href="${email}" class="social-pill email">
+                <span class="icon-container"><i data-lucide="mail"></i></span>
+                <span class="social-label">Email</span>
+            </a>
         `;
     }
 
+    // Render Hero Highlights (Replacing Ticker)
     const heroSkillsContainer = document.getElementById('heroSkillsTicker');
-    portfolioData.heroSkills.forEach((skill, index) => {
-        const skillSpan = document.createElement('span');
-        skillSpan.classList.add('skill-item');
-        skillSpan.textContent = skill;
-        heroSkillsContainer.appendChild(skillSpan);
+    // We'll reuse the container but change the class in CSS or here
+    heroSkillsContainer.className = 'hero-highlights'; // Change class
+    heroSkillsContainer.innerHTML = ''; // Clear
 
-        if (index < portfolioData.heroSkills.length - 1) {
-            const separator = document.createElement('span');
-            separator.classList.add('separator');
-            separator.textContent = "|";
-            heroSkillsContainer.appendChild(separator);
-        }
+    portfolioData.heroHighlights.forEach(highlight => {
+        const item = document.createElement('div');
+        item.classList.add('highlight-item');
+        item.innerHTML = highlight; // Contains emojis
+        heroSkillsContainer.appendChild(item);
     });
 
+    // 2. Render About Section
     // 2. Render About Section
     const aboutTextContainer = document.getElementById('aboutText');
     portfolioData.about.description.forEach(para => {
         const p = document.createElement('p');
-        p.textContent = para;
+        p.innerHTML = para; // Use innerHTML to render highlights
         aboutTextContainer.appendChild(p);
     });
+
+    const aboutImage = document.getElementById('aboutImage');
+    if (aboutImage) {
+        aboutImage.src = portfolioData.about.aboutImage;
+    }
 
     const aboutTechGrid = document.getElementById('aboutTechGrid');
     portfolioData.about.techStack.forEach(item => {
@@ -65,16 +108,33 @@ document.addEventListener('DOMContentLoaded', () => {
         card.classList.add('glass-card', 'education-card', 'fade-up');
         card.style.transitionDelay = `${index * 0.1}s`;
 
-        // Grade Logic
-        const gradeDisplay = edu.grade ? `<span style="color: var(--accent-cyan); font-weight: 600;"> • ${edu.grade}</span>` : '';
+        // Build details array
+        const details = [];
+        // Year with class for bold + fixed color
+        details.push(`<span class="edu-year">${edu.year}</span>`);
+
+        // Grade with class for hover protection (keeping inline style for base, but adding class)
+        if (edu.grade) details.push(`<span class="edu-grade" style="color: var(--accent-cyan); font-weight: 600;">${edu.grade}</span>`);
+
+        // Join with separator
+        const separator = `<span style="color: var(--text-secondary); margin: 0 8px; opacity: 0.6;">|</span>`;
+        const detailsHtml = details.join(separator);
+
+        // Credential Link (New Line)
+        const credentialHtml = edu.credentialLink ?
+            `<div style="margin-top: 2px; margin-bottom: 8px;"><a href="${edu.credentialLink}" class="credential-link-inline" target="_blank"><i data-lucide="external-link"></i> View Certificate</a></div>` : '';
 
         card.innerHTML = `
-            <div class="card-icon"><i data-lucide="graduation-cap"></i></div>
-            <h3 class="card-title">${edu.title}</h3>
-            <p class="card-subtitle">${edu.institution}</p>
-            <p class="card-subtitle">${edu.year}${gradeDisplay}</p>
+            <div class="education-header">
+                <div class="card-icon"><i data-lucide="graduation-cap"></i></div>
+                <h3 class="education-title-header">${edu.title}</h3>
+            </div>
+            <p class="card-subtitle uni-name">${edu.institution}</p>
+            <p class="card-subtitle" style="display: flex; align-items: center; flex-wrap: wrap; margin-bottom: 2px;">
+                ${detailsHtml}
+            </p>
+            ${credentialHtml}
             <p class="card-desc">${edu.description}</p>
-            <a href="${edu.credentialLink}" class="credential-link"><i data-lucide="external-link"></i> View Certificate</a>
         `;
         educationGrid.appendChild(card);
     });
@@ -114,10 +174,10 @@ document.addEventListener('DOMContentLoaded', () => {
             item.innerHTML = `
                 <div class="timeline-dot"></div>
                 <div class="timeline-content glass-card">
-                    <span class="date">${exp.duration} • <span style="color: #ff3333;">${exp.type}</span></span>
-                    <h3 class="role">${exp.role}</h3>
-                    <p class="company">${exp.company}</p>
-                    <p>${exp.description}</p>
+                    <h3 class="exp-role">${exp.role} <span class="exp-type">(${exp.type})</span></h3>
+                    <p class="exp-company">${exp.company} | ${exp.location || 'Remote'}</p>
+                    <p class="exp-duration">${exp.duration}</p>
+                    <p class="exp-desc">${exp.description}</p>
                 </div>
             `;
             experienceTimeline.appendChild(item);
@@ -135,13 +195,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const techStackHTML = project.techStack.map(tech => `<span>${tech}</span>`).join('');
 
         card.innerHTML = `
+            ${project.image ? `<div class="project-img-wrapper"><img src="${project.image}" alt="${project.title}" class="project-img"></div>` : ''}
             <div class="project-content">
-                <h3 class="project-title">${project.title}</h3>
-                <p class="project-desc">${project.description}</p>
+                <div class="project-header">
+                    <h3 class="project-title">${project.title}</h3>
+                </div>
                 <div class="tech-stack">${techStackHTML}</div>
+                <p class="project-desc">${project.description}</p>
                 <div class="project-links">
-                    <a href="${project.codeLink}" class="btn-link"><i data-lucide="github"></i> Code</a>
-                    <a href="${project.demoLink}" class="btn-link"><i data-lucide="external-link"></i> Demo</a>
+                    <a href="${project.codeLink}" class="project-link-item" target="_blank"><i data-lucide="github"></i> Code</a>
+                    <a href="${project.demoLink}" class="project-link-item" target="_blank"><i data-lucide="external-link"></i> Demo</a>
                 </div>
             </div>
         `;
@@ -249,14 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Custom Cursor
-    const cursorDot = document.getElementById('cursorDot');
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-    });
+    // Custom Cursor REMOVED
 
     // Scroll Animations (Intersection Observer)
     const fadeUpElements = document.querySelectorAll('.fade-up');
@@ -324,43 +380,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         type();
     }
-    // 3D Tilt Effect (Global Event Delegation)
-    let activeCard = null;
-
-    document.addEventListener('mousemove', (e) => {
-        const card = e.target.closest('.glass-card');
-
-        // If we are over a card AND it's not the currently active one (or active is null)
-        // CRITICAL UPDATE: Exclude the contact form from 3D tilt
-        if (card && !card.classList.contains('contact-form')) {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            // Calculate rotation (max 10deg)
-            const rotateX = ((y - centerY) / centerY) * -10;
-            const rotateY = ((x - centerX) / centerX) * 10;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-
-            // Track this card as active to reset it later if needed (though mouseleave handles its own reset usually)
-            activeCard = card;
-        }
-    });
-
-    // We can use a global mouseout to catch leaving ANY card
-    document.addEventListener('mouseout', (e) => {
-        const card = e.target.closest('.glass-card');
-        // If we left a card, reset it. 
-        // Note: 'mouseout' bubbles, 'mouseleave' does not. 
-        // For delegation, checking if we left the card is key.
-        if (card && e.relatedTarget && !card.contains(e.relatedTarget)) {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-        }
-    });
+    // 3D Tilt Effect REMOVED
+    // Cards now use CSS transform: translateY(-5px) for a subtle lift effect.
 
     // Navbar Scroll Effect
     const navbar = document.getElementById('navbar');
@@ -396,51 +417,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Typewriter Effect for Name
 // Typewriter Effect for Role (Headline)
-function initTypewriter() {
-    const roleElement = document.getElementById('heroRole');
-    if (!roleElement) return;
+// Typewriter Effect REMOVED
 
-    // Use role text instead of name
-    const texts = [portfolioData.role];
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typeSpeed = 50; // Faster typing for longer text
-
-    function type() {
-        const currentText = texts[textIndex];
-
-        if (isDeleting) {
-            roleElement.textContent = currentText.substring(0, charIndex - 1);
-            charIndex--;
-            typeSpeed = 30;
-        } else {
-            roleElement.textContent = currentText.substring(0, charIndex + 1);
-            charIndex++;
-            typeSpeed = 50;
-        }
-
-        if (!isDeleting && charIndex === currentText.length) {
-            isDeleting = true;
-            typeSpeed = 3000; // Pause before deleting
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-            typeSpeed = 500;
-        }
-
-        setTimeout(type, typeSpeed);
-    }
-
-    roleElement.classList.add('typing-cursor');
-    // Ensure name is static and has no cursor
-    const nameElement = document.getElementById('heroName');
-    if (nameElement) nameElement.classList.remove('typing-cursor');
-
-    type();
-}
-
-initTypewriter();
+// initTypewriter(); removed
 
 
 

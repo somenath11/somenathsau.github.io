@@ -1,14 +1,14 @@
 const portfolioData = {
     // Personal Details
     name: "SOMENATH SAU",
-    role: "Data & Cloud Enthusiast Focused on Scalable Solutions",
+    role: "Cloud & Data Professional",
     subtitle: "Focused on cloud infrastructure, analytics, and problem-solving.",
-    heroImage: "resources/Somenath_Sau.jpg", // Replace with your image path
-    resumeLink: "resources/somenathCV.pdf",
+    heroImage: "resources/media/Somenath_Sau.jpg",
+    resumeLink: "resources/media/somenathCV.pdf",
     email: "somenathsau@gmail.com",
 
     // Typing Effect Skills
-    typingSkills: ["Cloud Support Engineer", "Data Analyst", "Problem Solver"],
+    typingSkills: ["Cloud Engineer", "Data Analyst"],
 
     // Social Links
     socialLinks: {
@@ -17,15 +17,25 @@ const portfolioData = {
         email: "mailto:somenathsau@gmail.com"
     },
 
-    // Hero Skills Ticker
+    // Hero Highlights
+    heroHighlights: [
+        "⚡ Cloud Engineer",
+        "🚀 Data Analyst"
+    ],
+
+    // Hero Skills Ticker (Deprecated/Fallback)
     heroSkills: ["SQL", "Python", "AWS", "Excel", "Power BI", "Linux"],
 
     // About Me
     about: {
         description: [
-            "I am a data-driven MCA graduate (2024) passionate about analytics and cloud technologies. I thrive on turning complex data into strategic insights and supporting resilient cloud infrastructures. My goal is to bridge the gap between data and technology by delivering efficient, scalable, and impactful solutions.",
-            "With expertise in Python, SQL, and AWS, I am equipped to tackle complex challenges in data analysis and cloud support roles. I thrive in dynamic environments that demand structured problem-solving, adaptability, and continuous learning, consistently aiming to deliver efficient and scalable solutions."
+            "Hey! I'm <span class='highlight'>Somenath Sau</span>, I've been close to a computer since an early age, and been passionate about it ever since.",
+            "I am a <span class='highlight'>Data & Cloud Enthusiast</span> and I really liked to crafting seamless digital experiences, from <span class='highlight'>Data Analysis</span> to <span class='highlight'>Cloud Infrastructure</span>. I do programming in various <span class='highlight'>Languages</span> and technologies.",
+            "\"I bring a comprehensive approach to building scalable and efficient systems\" and had the privilege to worked in a <span class='highlight'>Recruitment Company</span> and a <span class='highlight'>SaaS Company</span>.",
+            "I'm interested in building something awesome with code and currently focused on <span class='highlight'>Data Science</span>, <span class='highlight'>Cloud Computing</span> and <span class='highlight'>AI</span>.",
+            "When I'm not coding I play games with my friends, watch some show on Netflix, or if the weather's good, play Badminton! 🏸 or cricket! 🏏"
         ],
+        aboutImage: "resources/media/Somenath_Sau.jpg",
         techStack: [
             { name: "SQL", icon: "database" },
             { name: "Python", icon: "code" },
@@ -39,25 +49,26 @@ const portfolioData = {
         {
             title: "Master of Computer Applications (MCA)",
             institution: "KIIT University, BBSR",
-            year: "2024",
+            year: "2022 - 2024",
             grade: "CGPA: 7.83", /* Update with actual score */
             description: "Specializing in Data Science and Cloud Computing. Graduated with honors.",
             credentialLink: "https://drive.google.com/file/d/1TSnZ40uAztN65L_6KxdvZ3E9p1kb20nx/view?usp=drive_link"
         },
         {
-            title: "Bachelor of Computer Application (BCA)",
+            title: "Bachelor of Computer Applications (BCA)",
             institution: "Trident Academy of Creative Technology, BBSR",
-            year: "2021",
+            year: "2018 - 2021",
             grade: "CGPA: 7.47", /* Update with actual score */
             description: "Major in Computer Science. Foundational knowledge in programming and database management.",
             credentialLink: "https://drive.google.com/file/d/176k0TkTn23BIiwMioxoJQnHkLW51Ow8-/view?usp=drive_link"
         },
         {
-            title: "+2 Science",
+            title: "Higher Secondary (10+2) Science",
             institution: "Sai +2 Science College, Takatpur",
-            year: "2018",
+            year: "2016 - 2018",
+            grade: "Result: Pass", /* Update with actual score */
             description: "Major in Physics, Chemistry and Mathematics",
-            credentialLink: "#"
+            //credentialLink: "#"
         }
     ],
 
@@ -66,16 +77,18 @@ const portfolioData = {
         {
             role: "Data Scientist Intern",
             company: "CodeClause",
-            duration: "Nov 2023 - Dec 2023",
+            location: "Remote",
+            duration: "Nov 2023 – Dec 2023",
             type: "Internship",
-            description: "Built ML models for Speech Emotion Recognition, Loan Risk Prediction, and conducted Uber ride data analysis, achieving 85%+ accuracy through feature engineering, EDA, and model optimization."
+            description: "Developed ML models for Speech Emotion Recognition and Loan Risk Prediction, and performed large-scale Uber ride data analysis. Achieved 85%+ accuracy through feature engineering, EDA, and model optimization."
         },
         {
             role: "AI Contributor",
             company: "Outlier AI",
-            duration: "Sep 2024 - May 2025",
-            type: "Freelancing",
-            description: "Completed 1,000+ RLHF & SFT tasks, improving LLM alignment and reasoning with 95%+ quality accuracy, enhancing training data precision and response consistency."
+            location: "Remote",
+            duration: "Sep 2024 – May 2025",
+            type: "Freelance",
+            description: "Completed 1,000+ RLHF and SFT evaluation tasks, reviewing LLM responses across open-ended and structured prompts. Assessed outputs for instruction adherence, truthfulness, reasoning quality, and safety compliance, maintaining 95%+ quality accuracy."
         }
     ],
 
@@ -85,6 +98,7 @@ const portfolioData = {
             title: "Uber Data Analysis",
             description: "Analyzed 10K+ Uber ride records to uncover demand trends and peak-hour patterns.",
             techStack: ["Extract, Transform, Load (ETL)", "Big Data Analytics", "Statistical Data Analysis"],
+            image: "resources/media/uber_analysis.jpg",
             codeLink: "#",
             demoLink: "#"
         },
@@ -92,6 +106,7 @@ const portfolioData = {
             title: "Speech Emotion Recognition",
             description: "Developed a Speech Emotion Recognition model using audio feature extraction, achieving 88%+ classification accuracy.",
             techStack: ["Data Processing", "Data Cleaning", "Model Making"],
+            image: "resources/media/speech_emotion.jpg",
             codeLink: "#",
             demoLink: "#"
         },
@@ -99,6 +114,7 @@ const portfolioData = {
             title: "Python Data Automation",
             description: "Script to automate daily data cleaning and reporting tasks, reducing manual effort by 80%.",
             techStack: ["Python", "Pandas", "SQL"],
+            image: "resources/media/python_automation.jpg",
             codeLink: "#",
             demoLink: "#"
         }
@@ -107,23 +123,40 @@ const portfolioData = {
     // Skills Section
     skills: [
         {
-            category: "Data Analytics",
+            category: "Cloud & Infrastructure",
             items: [
-                { name: "SQL", icon: "database" },
-                { name: "Excel", icon: "table" },
-                { name: "Power BI", icon: "bar-chart" },
-                { name: "Python", icon: "code" },
-                { name: "Pandas", icon: "layout" },
-                { name: "Data Cleaning", icon: "filter" },
-                { name: "Preprocessing", icon: "file-cog" },
-                { name: "Model Building", icon: "brain-circuit" }
+                { name: "AWS (EC2, S3, IAM)", icon: "cloud" },
+                { name: "Linux", icon: "terminal" },
+                { name: "Basic Networking(VPC, Security Groups)", icon: "wifi" },
             ]
         },
         {
-            category: "Cloud Computing",
+            category: "Data Analytics",
             items: [
-                { name: "AWS (EC2, S3, IAM)", icon: "cloud" },
-                { name: "Linux", icon: "terminal" }
+                { name: "Excel", icon: "table" },
+                { name: "Power BI", icon: "bar-chart" },
+                { name: "Pandas", icon: "layout" },
+                { name: "Matplotlib", icon: "layout" },
+            ]
+        },
+        {
+            category: "Programming and Databases",
+            items: [
+                { name: "Python", icon: "code" },
+                { name: "SQL", icon: "database" },
+                { name: "HTML 5", icon: "code" },
+                { name: "CSS 3", icon: "code" },
+                { name: "MySQL", icon: "database" },
+                { name: "JavaScript", icon: "code" },
+            ]
+        },
+        {
+            category: "LLM Evaluation & Annotation",
+            items: [
+                { name: "RLHF Annotation", icon: "edit-3" },
+                { name: "Prompt Engineering", icon: "message-square" },
+                { name: "Response Evaluation", icon: "check-circle" },
+                { name: "Safety Review", icon: "shield-check" }
             ]
         },
         {
@@ -131,28 +164,18 @@ const portfolioData = {
             items: [
                 { name: "VS Code", icon: "monitor" },
                 { name: "Git & GitHub", icon: "git-branch" },
-                { name: "Tableau", icon: "bar-chart-2" }
-            ]
-        },
-        {
-            category: "LLM Training & Evaluation",
-            items: [
-                { name: "RLHF", icon: "git-merge" },
-                { name: "LLM Evaluation", icon: "check-circle" },
-                { name: "Prompt Engineering", icon: "message-square" },
-                { name: "Response Ranking", icon: "arrow-up-down" },
-                { name: "Data Annotation", icon: "edit-3" }
-            ]
-        },
-        {
-            category: "Soft Skills",
-            items: [
-                { name: "Communication", icon: "message-circle" },
-                { name: "Problem Solving", icon: "puzzle" },
-                { name: "Team Leadership", icon: "users" },
-                { name: "Adaptability", icon: "refresh-cw" }
+                { name: "Jupyter Notebook", icon: "notebook" },
             ]
         }
+        // {
+        //     category: "Soft Skills",
+        //     items: [
+        //         { name: "Communication", icon: "message-circle" },
+        //         { name: "Problem Solving", icon: "puzzle" },
+        //         { name: "Team Leadership", icon: "users" },
+        //         { name: "Adaptability", icon: "refresh-cw" }
+        //     ]
+        // }
     ],
 
     // Certifications

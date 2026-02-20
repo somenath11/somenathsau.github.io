@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Aspiring Data Analyst & Cloud Support Engineer</title>
-    <link rel="icon" type="image/x-icon" href="resources/favicon.ico">
+    <title>Portfolio | Somenath Sau</title>
+    <link rel="icon" type="image/x-icon" href="resources/media/favicon.ico">
     <meta name="description"
         content="Portfolio of a results-driven MCA graduate specializing in Data Analysis, Cloud Support, and Python automation.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <link rel="stylesheet" href="resources/styles.css?v=21.0">
+    <link rel="stylesheet" href="resources/styles.css?v=29.0">
 </head>
 
 <body>
@@ -23,25 +23,20 @@
 
 
     <!-- Custom Cursor -->
-    <div class="cursor-dot" id="cursorDot"></div>
+    <!-- Custom Cursor REMOVED -->
 
-    <!-- Background Shapes (Global) -->
-    <div class="background-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-    </div>
+    <!-- Background Shapes REMOVED -->
 
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#home" class="logo">Somenath<span class="accent">.</span></a>
+            <a href="#home" class="logo"><i data-lucide="code-xml"></i></a>
             <ul class="nav-links">
                 <li><a href="#about">About Me</a></li>
-                <li><a href="#education">Education</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#contact" class="btn-primary">Contact Me</a></li>
             </ul>
@@ -77,11 +72,7 @@
                 </div>
             </div>
 
-            <div class="hero-image-container">
-                <div class="hero-image-wrapper">
-                    <img src="" alt="Profile" id="heroImage" class="hero-img">
-                </div>
-            </div>
+            <!-- Hero Image Removed -->
         </div>
 
         <div class="scroll-arrows">
@@ -97,29 +88,28 @@
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title fade-up">About <span class="accent">Me</span></h2>
+            <h2 class="section-title fade-up"><i data-lucide="zap" class="title-icon"></i> About <span
+                    class="accent">Me</span></h2>
             <div class="about-content">
-                <div class="about-text fade-up" id="aboutText">
-                    <!-- Dynamic Content -->
+                <div class="about-text-column">
+                    <div class="about-text fade-up" id="aboutText">
+                        <!-- Dynamic Content -->
+                    </div>
                 </div>
+                <div class="about-image-column fade-up">
+                    <div class="about-image-wrapper">
+                        <div class="about-image-grid"></div>
+                        <img src="" alt="About Me" id="aboutImage" class="about-img">
+                    </div>
+                </div>
+            </div>
+            <!-- Tech Grid Moved Below or Integrated? Reference shows text left, image right. Tech stack not explicitly shown in reference but we should keep it maybe below text? -->
+            <!-- Let's keep tech grid below text in the left column for now, or just below everything if it doesn't fit the "text only" vibe. 
+                 The reference just has text. Let's put tech grid inside the left column below text. -->
+            <div class="tech-grid-wrapper fade-up">
                 <div class="tech-grid" id="aboutTechGrid">
                     <!-- Dynamic Content -->
                 </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-    <div class="section-divider"></div>
-    <!-- Education Section -->
-    <section id="education" class="section">
-        <div class="container">
-            <h2 class="section-title fade-up">Education</h2>
-            <div class="education-grid" id="educationGrid">
-                <!-- Dynamic Content -->
             </div>
         </div>
     </section>
@@ -134,6 +124,22 @@
         <div class="container">
             <h2 class="section-title fade-up">Projects</h2>
             <div class="projects-grid" id="projectsGrid">
+                <!-- Dynamic Content -->
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <div class="section-divider"></div>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title fade-up">Technical Skills</h2>
+
+            <div id="skillsContainer">
                 <!-- Dynamic Content -->
             </div>
         </div>
@@ -159,12 +165,11 @@
 
 
     <div class="section-divider"></div>
-    <!-- Skills Section -->
-    <section id="skills" class="section">
+    <!-- Education Section -->
+    <section id="education" class="section">
         <div class="container">
-            <h2 class="section-title fade-up">Technical Skills</h2>
-
-            <div id="skillsContainer">
+            <h2 class="section-title fade-up">Education</h2>
+            <div class="education-grid" id="educationGrid">
                 <!-- Dynamic Content -->
             </div>
         </div>
@@ -257,7 +262,7 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 somenath. All rights reserved.</p>
-            <a href="#" class="back-to-top" id="backToTop"><i data-lucide="arrow-up"></i></a>
+            <a href="#home" class="back-to-top" id="backToTop"><i data-lucide="arrow-up"></i></a>
         </div>
     </footer>
 
@@ -270,5 +275,3 @@
 
 
 </html>
-
-
