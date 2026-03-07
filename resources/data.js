@@ -95,29 +95,30 @@ const portfolioData = {
     // Projects
     projects: [
         {
+            title: "AWS EC2 Cloud Monitoring Tool",
+            description: "This project monitors server resource usage including CPU, memory, and disk usage on an AWS EC2 instance.",
+			techStack: ["AWS EC2", "Bash Scripting", "Cron Schedular"],
+            //image: "resources/media/uber_analysis.jpg",
+            codeLink: "https://github.com/somenathsau/AWS-EC2-Cloud-Monitoring-Tool",
+            //demoLink: "#"
+        },
+		{
             title: "Uber Data Analysis",
             description: "Analyzed 10K+ Uber ride records to uncover demand trends and peak-hour patterns.",
-            techStack: ["Extract, Transform, Load (ETL)", "Big Data Analytics", "Statistical Data Analysis"],
+            techStack: ["Python", "Numpy", "Pandas"],
             image: "resources/media/uber_analysis.jpg",
-            codeLink: "#",
+            codeLink: "https://github.com/somenathsau/CodeClause-data-science-internship/tree/main/Project%203%20-%20Uber%20Data%20Analysis",
             demoLink: "#"
         },
         {
             title: "Speech Emotion Recognition",
             description: "Developed a Speech Emotion Recognition model using audio feature extraction, achieving 88%+ classification accuracy.",
-            techStack: ["Data Processing", "Data Cleaning", "Model Making"],
+            techStack: ["Python", "Matplotlib", "PyAudio"],
             image: "resources/media/speech_emotion.jpg",
             codeLink: "#",
             demoLink: "#"
-        },
-        {
-            title: "Python Data Automation",
-            description: "Script to automate daily data cleaning and reporting tasks, reducing manual effort by 80%.",
-            techStack: ["Python", "Pandas", "SQL"],
-            image: "resources/media/python_automation.jpg",
-            codeLink: "#",
-            demoLink: "#"
         }
+        
     ],
 
     // Skills Section
