@@ -96,7 +96,7 @@ const portfolioData = {
     projects: [
         {
             title: "AWS EC2 Cloud Monitoring Tool",
-            description: "This project monitors server resource usage including CPU, memory, and disk usage on an AWS EC2 instance.",
+            description: "Developed a cloud-based monitoring solution on Amazon EC2 to track server resource usage including CPU, memory, and disk metrics. Implemented Bash scripts and scheduled cron jobs to automate system monitoring and integrated CloudWatch logs and alerts for real-time performance tracking.",
 			techStack: ["AWS EC2", "Bash Scripting", "Cron Schedular"],
             image: "resources/media/AWS_monitoring.png",
             codeLink: "https://github.com/somenathsau/AWS-EC2-Cloud-Monitoring-Tool",
@@ -104,11 +104,19 @@ const portfolioData = {
         },
 		{
             title: "Crime Data Analysis in India",
-            description: "Analyzed Indian crime statistics to identify patterns using statistical analysis and machine learning.",
+            description: "Analyzed crime datasets using data cleaning, exploratory data analysis (EDA), and visualization techniques to identify trends and patterns in criminal activities. Developed charts and visual reports in Excel to highlight crime distribution, frequency, and category-wise insights.",
 			techStack: ["Python", "Matplotlib", "Scikit-learn"],
             image: "resources/media/crime_correlation_heatmap.png",
             codeLink: "https://github.com/somenathsau/Crime_Report_in_India_2013",
             demoLink: "https://nbviewer.org/github/somenathsau/Crime_Report_in_India_2013/blob/main/Crime_Report_Analysis_2013.ipynb"
+        },
+		{
+            title: "AI-Assisted Portfolio Website",
+            description: "Developed a responsive developer portfolio using AI-assisted development (Vibe Coding). Implemented an automated contact workflow integrating Google Forms and Google Sheets to capture submissions and trigger email notifications.",
+			techStack: ["AI-Assisted Dev", "Automation", "Vibe Coding"],
+            image: "resources/media/portfolio-home.png",
+            codeLink: "https://github.com/somenathsau/somenathsau.github.io",
+            demoLink: "https://somenathsau.github.io"
         },
 		{
             title: "Uber Data Analysis",
@@ -118,14 +126,14 @@ const portfolioData = {
             codeLink: "https://github.com/somenathsau/CodeClause-data-science-internship/tree/main/Project%203%20-%20Uber%20Data%20Analysis",
             demoLink: "https://nbviewer.org/github/somenathsau/CodeClause-data-science-internship/blob/main/Project%203%20-%20Uber%20Data%20Analysis/Uber%20data%20analysis.ipynb"
         },
-        {
+        /*{
             title: "Speech Emotion Recognition",
             description: "Developed a Speech Emotion Recognition model using audio feature extraction, achieving 88%+ classification accuracy.",
             techStack: ["Python", "Matplotlib", "PyAudio"],
             image: "resources/media/speech_emotion.jpg",
             codeLink: "#",
             demoLink: "#"
-        }
+        }*/
         
     ],
 
