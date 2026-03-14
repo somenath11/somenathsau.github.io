@@ -46,7 +46,3 @@ The contact form is connected to **Google Forms**, which enables an automated wo
 
 This setup enables structured data collection and quick response handling.
 
----
-
-## 📂 Project Structure
-
