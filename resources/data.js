@@ -7,7 +7,7 @@ const portfolioData = {
     resumeLink: "resources/media/somenathCV.pdf",
     email: "somenathsau@gmail.com",
 
-    bio: "Passionate about merging <span class='hl-cyan'>Data Analysis</span> with <span class='hl-purple'>Gen AI</span> to turn complex information into <span class='hl-blue'>intelligent action</span>. I believe the future of data isn't just about 'what happened,' but about '<span class='hl-cyan'>what can be generated next</span>.'<br><br>My path here was paved by <span class='hl-purple'>pure curiosity</span>. As a constant browser of the tech world, I spent years hunting for <span class='hl-blue'>new ideas</span> and <span class='hl-cyan'>digital trends</span>. That spark for discovery naturally evolved into a career in <span class='hl-purple'>Data Analytics</span>, where I now use that same <span class='hl-blue'>investigative mindset</span> to find <span class='hl-cyan'>stories and patterns</span> hidden within data.",
+    bio: "Passionate about merging <span class='hl-cyan'>Data Analysis</span> with <span class='hl-purple'>Gen AI</span> to turn complex information into <span class='hl-blue'>intelligent action</span>. I believe the future of data isn't just about 'what happened,' but about '<span class='hl-cyan'>what can be generated next</span>.'<br><br>My journey began with a <span class='hl-purple'>curiosity to explore</span> new things on the internet. While discovering <span class='hl-cyan'>ideas and trends</span>, I found myself drawn to <span class='hl-blue'>data</span> and how it tells stories. That curiosity gradually led me into <span class='hl-purple'>Data Analytics</span>, where I now enjoy <span class='hl-blue'>uncovering patterns and insights</span>.",
 
     // Social Links
     socialLinks: {

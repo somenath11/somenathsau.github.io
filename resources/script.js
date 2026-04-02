@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     heroSubtitleEl.textContent = portfolioData.subtitle;
     */
 
-    // 2. Render Hero Image
+    // Update Hero Image
     const heroImageContainer = document.getElementById('heroImageContainer');
     if (heroImageContainer && portfolioData.heroImage) {
         heroImageContainer.innerHTML = `
