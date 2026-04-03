@@ -487,18 +487,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageSections = ['home', 'about', 'projects', 'skills', 'experience', 'education', 'certifications', 'contact'];
     const sectionElements = pageSections.map(id => document.getElementById(id)).filter(Boolean);
 
-    // Initial state: hide everything except 'home' and 'about'
+    // Helper to detect mobile view
+    const isMobileView = () => window.innerWidth <= 768;
+
+    // Initial state
     let initialHash = window.location.hash.substring(1);
     
-    if (!initialHash || initialHash === 'home' || initialHash === 'about') {
-        sectionElements.forEach(sec => {
-            if (sec.id !== 'home' && sec.id !== 'about') sec.classList.add('hidden-section');
-        });
-    } else if (pageSections.includes(initialHash)) {
-        sectionElements.forEach(sec => {
-            if (sec.id !== initialHash) sec.classList.add('hidden-section');
-        });
-    }
+    const initializeVisibility = () => {
+        if (isMobileView()) {
+            // Show ALL sections on mobile
+            sectionElements.forEach(sec => sec.classList.remove('hidden-section'));
+            if (initialHash && pageSections.includes(initialHash)) {
+                setTimeout(() => {
+                    const target = document.getElementById(initialHash);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        } else {
+            // Initial state for Desktop: hide everything except 'home' and 'about'
+            if (!initialHash || initialHash === 'home' || initialHash === 'about') {
+                sectionElements.forEach(sec => {
+                    if (sec.id !== 'home' && sec.id !== 'about') sec.classList.add('hidden-section');
+                    else sec.classList.remove('hidden-section');
+                });
+            } else if (pageSections.includes(initialHash)) {
+                sectionElements.forEach(sec => {
+                    if (sec.id !== initialHash) sec.classList.add('hidden-section');
+                    else sec.classList.remove('hidden-section');
+                });
+            }
+        }
+    };
+
+    initializeVisibility();
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -507,33 +528,35 @@ document.addEventListener('DOMContentLoaded', () => {
             if (targetId === '#') return;
 
             const targetSectionId = targetId.substring(1);
+            const targetElement = document.getElementById(targetSectionId);
             
-            // If it's a "page" section, handle the SPA swap
             if (pageSections.includes(targetSectionId)) {
-                // Hide all sections first
-                sectionElements.forEach(sec => sec.classList.add('hidden-section'));
-                
-                if (targetSectionId === 'home') {
-                    // Clicking home resets to Home + About
-                    document.getElementById('home').classList.remove('hidden-section');
-                    document.getElementById('about').classList.remove('hidden-section');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else if (targetSectionId === 'about') {
-                    // Clicking about also shows Home + About but scrolls to About
-                    document.getElementById('home').classList.remove('hidden-section');
-                    document.getElementById('about').classList.remove('hidden-section');
-                    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+                if (isMobileView()) {
+                    // Mobile: Just scroll to the section
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
                 } else {
-                    // Show ONLY the target section (e.g., Projects, Skills)
-                    const targetElement = document.getElementById(targetSectionId);
-                    targetElement.classList.remove('hidden-section');
+                    // Desktop: Hide all and show target (SPA behavior)
+                    sectionElements.forEach(sec => sec.classList.add('hidden-section'));
                     
-                    // Since it's now the only section visible, scroll to the top of the page
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    if (targetSectionId === 'home') {
+                        document.getElementById('home').classList.remove('hidden-section');
+                        document.getElementById('about').classList.remove('hidden-section');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else if (targetSectionId === 'about') {
+                        document.getElementById('home').classList.remove('hidden-section');
+                        document.getElementById('about').classList.remove('hidden-section');
+                        document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        if (targetElement) {
+                            targetElement.classList.remove('hidden-section');
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                    }
                 }
             } else {
                  // Normal smooth scroll for other things (e.g., backToTop button)
-                 const targetElement = document.querySelector(targetId);
                  if (targetElement) {
                      targetElement.scrollIntoView({ behavior: 'smooth' });
                  }
@@ -542,6 +565,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // Clean URL
             history.replaceState(null, null, ' ');
         });
+    });
+
+    // Optional: Handle window resize to switch between modes
+    let lastWidth = window.innerWidth;
+    window.addEventListener('resize', () => {
+        if ((lastWidth > 768 && window.innerWidth <= 768) || (lastWidth <= 768 && window.innerWidth > 768)) {
+            initializeVisibility();
+        }
+        lastWidth = window.innerWidth;
     });
 
 });

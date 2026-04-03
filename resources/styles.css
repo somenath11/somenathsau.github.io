@@ -2000,7 +2000,7 @@ body {
 
 @media (max-width: 768px) {
     .footer-container {
-        flex-direction: column;
+        flex-direction: column-reverse;
         text-align: center;
         gap: 25px;
     }
@@ -2934,8 +2934,34 @@ body {
 @media (max-width: 768px) {
     .footer-container {
         justify-content: center;
-        flex-direction: column;
+        flex-direction: column-reverse;
         text-align: center;
         gap: 20px;
+    }
+
+    /* Force all sections and dividers to be visible for single-page scrolling on mobile */
+    .hidden-section {
+        display: flex !important; /* Most sections use flex */
+    }
+    
+    section.hidden-section {
+        display: flex !important;
+    }
+
+    .section-divider {
+        display: block !important;
+        height: 1px;
+        width: 100%;
+        background: linear-gradient(to right, transparent, var(--glass-border), transparent);
+        margin: 0;
+    }
+
+    .section {
+        min-height: auto !important; /* Sections fit content on mobile */
+        padding: 60px 0 !important; /* tighter spacing for mobile scroll */
+    }
+    
+    .hero-section {
+        min-height: 100vh !important; /* Keep hero full height */
     }
 }
