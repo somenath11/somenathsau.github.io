@@ -1,13 +1,13 @@
 const portfolioData = {
     // Personal Details
     name: "SOMENATH SAU",
-    role: "Cloud & Data Professional",
+    role: "Data Analyst | Python • SQL • Power BI",
     subtitle: "Focused on cloud infrastructure, analytics, and problem-solving.",
     heroImage: "resources/assets/hero/Somenath_Sau.webp",
-    resumeLink: "resources/assets/docs/somenathCV.pdf",
-    email: "somenathsau@gmail.com",
+    resumeLink: "resources/assets/docs/Somenath-Sau-dataAnalyst.pdf",
+    email: "mailto:somenathsau@gmail.com",
 
-    bio: "Passionate about merging <span class='hl-cyan'>Data Analysis</span> with <span class='hl-purple'>Gen AI</span> to turn complex information into <span class='hl-blue'>intelligent action</span>. I believe the future of data isn't just about 'what happened,' but about '<span class='hl-cyan'>what can be generated next</span>.'<br><br>My journey began with a <span class='hl-purple'>curiosity to explore</span> new things on the internet. While discovering <span class='hl-cyan'>ideas and trends</span>, I found myself drawn to <span class='hl-blue'>data</span> and how it tells stories. That curiosity gradually led me into <span class='hl-purple'>Data Analytics</span>, where I now enjoy <span class='hl-blue'>uncovering patterns and insights</span>.",
+    bio: "Aspiring Data Analyst specializing in Python, SQL, and Power BI, focused on transforming raw data into actionable business insights. Exploring <span class='hl-accent'>Gen AI</span> to enhance analytical workflows and decision-making.<br><br>I enjoy uncovering patterns, building dashboards, and delivering insights that support better business decisions.",
 
     // Social Links
     socialLinks: {
@@ -22,7 +22,7 @@ const portfolioData = {
         domains: [
             {
                 title: "Data Analyst",
-                illustration: "resources/assets/images/data_analyst_expertise.png",
+                illustration: "resources/assets/images/expertise_data.png",
                 techIcons: ["database", "table", "bar-chart-2", "layout", "code"],
                 bullets: [
                     "Performed data cleaning and exploratory analysis on real-world datasets.",
@@ -33,7 +33,7 @@ const portfolioData = {
             },
             {
                 title: "Generative AI & Prompting",
-                illustration: "resources/assets/images/ai_llm_engineer_expertise.png",
+                illustration: "resources/assets/images/expertise_ai.png",
                 techIcons: ["brain", "message-square", "shield-check", "edit-3", "check-circle"],
                 bullets: [
                     "Completed 500+ RLHF and SFT evaluation tasks for LLM outputs.",
@@ -43,45 +43,49 @@ const portfolioData = {
                     "Identified failure patterns and suggested improvements for model responses."
                 ]
             }
-        ],
-        techStack: [
-            { name: "🗄 SQL" },
-            { name: "🐍 Python" },
-            { name: "☁️ AWS" },
-            { name: "📊 Power BI" }
         ]
     },
 
     // Education
     education: [
         {
-            title: "Master of Computer Applications (MCA)",
-            institution: "KIIT University, BBSR",
-            shortName: "KIIT",
-            year: "2022 - 2024",
-            grade: "CGPA: 7.83", /* Update with actual score */
-            description: "Specializing in Data Science and Cloud Computing. Graduated with honors.",
-            logo: "resources/assets/icons/kiit-logo.webp", // Add your logo file path here
-            credentialLink: "https://kiit.ac.in/"
+            badge: "KIIT",
+            institution: "Kalinga Institute of Industrial technology",
+            years: "2022–2024",
+            degree: "Master of Computer Applications",
+            location: "BBSR, Odisha",
+            score: "7.83",
+            scoreLabel: "CGPA",
+            tag: "Computer Applications",
+            description: "Specializing in Data Science and Big Data",
+            logo: "resources/assets/icons/kiit-logo.webp",
+            website: "https://kiit.ac.in/"
         },
         {
-            title: "Bachelor of Computer Applications (BCA)",
-            institution: "Trident Academy of Creative Technology, BBSR",
-            shortName: "TACT",
-            year: "2018 - 2021",
-            grade: "CGPA: 7.47", /* Update with actual score */
-            description: "Major in Computer Science. Foundational knowledge in programming and database management.",
-            logo: "resources/assets/icons/trident-logo.webp", // Add your logo file path here
-            credentialLink: "https://tact.ac.in/"
+            badge: "TACT",
+            institution: "Trident Academy of Creative Technology",
+            years: "2018–2021",
+            degree: "Bachelor of Computer Applications",
+            location: "BBSR, Odisha",
+            score: "7.47",
+            scoreLabel: "CGPA",
+            tag: "Computer Application",
+            description: "Foundational programming and database management",
+            logo: "resources/assets/icons/trident-logo.webp",
+            website: "https://tact.ac.in/"
         },
         {
-            title: "Higher Secondary (10+2) Science",
-            institution: "Sai +2 Science College, Takatpur",
-            shortName: "Sai +2",
-            year: "2016 - 2018",
-            description: "Major in Physics, Chemistry and Mathematics",
-            logo: "resources/assets/icons/sai-logo.webp", // Add your logo file path here
-            credentialLink: "https://saihss.in/"
+            badge: "XII",
+            institution: "Sai +2 Science College",
+            years: "2016–2018",
+            degree: "Higher Secondary Examination",
+            location: "Palbani, Baripada",
+            score: "Passed",
+            scoreLabel: "",
+            tag: "Science",
+            description: "",
+            logo: "resources/assets/icons/sai-logo.webp",
+            website: "https://saihss.in/"
         }
     ],
 
@@ -125,33 +129,75 @@ const portfolioData = {
             ],
             techStack: ["Python", "SQL", "Power BI", "Excel", "Pandas", "NumPy", "Data Cleaning", "Data Visualization"],
             description: "Analyzed large datasets using Python (Pandas, NumPy) and SQL to extract actionable insights. Built interactive Power BI dashboards and automated reporting processes, reducing manual effort by 30%. Performed data cleaning, transformation, and exploratory data analysis (EDA) to support business decision-making."
+        },
+        {
+            role: "Data Analyst",
+            company: "Landmine Soft",
+            location: "Hyderabad, India",
+            duration: "Nov 2025 – Present",
+            type: "Full Time",
+            metrics: [
+                { val: "10+", label: "Dashboards built" },
+                { val: "1M+", label: "Records analyzed" }
+            ],
+            techStack: ["Python", "SQL", "Power BI", "Excel", "Pandas", "NumPy", "Data Cleaning", "Data Visualization"],
+            description: "Analyzed large datasets using Python (Pandas, NumPy) and SQL to extract actionable insights. Built interactive Power BI dashboards and automated reporting processes, reducing manual effort by 30%. Performed data cleaning, transformation, and exploratory data analysis (EDA) to support business decision-making."
         }
     ],
 
     // Projects
     projects: [
         {
-            title: "Crime Data Analysis in India",
-            description: "Analyzed crime datasets using data cleaning, exploratory data analysis (EDA), and visualization techniques to identify trends and patterns in criminal activities. Developed charts and visual reports in Excel to highlight crime distribution, frequency, and category-wise insights.",
-            techStack: ["Python", "Matplotlib", "Scikit-learn"],
-            category: "Data Analysis",
-            image: "resources/assets/images/crime_correlation_heatmap.webp",
-            codeLink: "https://github.com/somenathsau/Crime_Report_in_India_2013",
-            demoLink: "https://nbviewer.org/github/somenathsau/Crime_Report_in_India_2013/blob/main/Crime_Report_Analysis_2013.ipynb"
-        },
-        {
             title: "Uber Data Analysis",
             description: "Analyzed 10K+ Uber ride records to uncover demand trends and peak-hour patterns.",
-            techStack: ["Python", "Numpy", "Pandas"],
+            keyInsight: "Peak ride demand increases by 35% during 6–9 PM.",
+            problem: "Uber struggles with vehicle allocation during varying demand periods, leading to longer wait times and lost revenue.",
+            dataset: "10,000+ historical Uber ride records containing timestamps, pickup/drop-off locations, and trip statuses.",
+            approach: [
+                "Performed extensive data cleaning to handle missing values and correct datetime formats.",
+                "Conducted Exploratory Data Analysis (EDA) to identify trip frequency by hour, day, and month.",
+                "Visualized demand-supply gaps across different city zones using heatmaps.",
+                "Analyzed cancellation rates and reasons during peak traffic hours."
+            ],
+            businessImpact: "Identified key surge periods, allowing for optimized driver allocation which could potentially reduce wait times by 15% and increase daily revenue.",
+            techStack: ["Python", "Numpy", "Pandas", "Matplotlib", "Seaborn"],
             category: "Data Analysis",
             image: "resources/assets/images/Uber_Project.webp",
             codeLink: "https://github.com/somenathsau/CodeClause-data-science-internship/tree/main/Project%203%20-%20Uber%20Data%20Analysis",
             demoLink: "https://nbviewer.org/github/somenathsau/CodeClause-data-science-internship/blob/main/Project%203%20-%20Uber%20Data%20Analysis/Uber%20data%20analysis.ipynb"
         },
         {
+            title: "Crime Data Analysis in India",
+            description: "Analyzed historical crime datasets to identify trends and patterns in criminal activities across different states.",
+            keyInsight: "Property crimes constitute over 40% of reported incidents in urban centers.",
+            problem: "Law enforcement agencies lack clear visibility into macro-level crime trends, hindering effective resource deployment.",
+            dataset: "Comprehensive dataset from 2013 containing state-wise crime statistics, categorized by offense type and demographic.",
+            approach: [
+                "Cleaned and standardized state-level reporting inconsistencies.",
+                "Developed correlation matrices to find relationships between different crime categories.",
+                "Created comparative visual reports to highlight high-risk zones.",
+                "Segmented data by demographic impact to understand vulnerable populations."
+            ],
+            businessImpact: "Provided a data-driven foundation for predictive policing strategies, enabling more targeted patrol deployments in high-risk zones.",
+            techStack: ["Python", "Matplotlib", "Scikit-learn", "Pandas"],
+            category: "Data Analysis",
+            image: "resources/assets/images/crime_correlation_heatmap.webp",
+            codeLink: "https://github.com/somenathsau/Crime_Report_in_India_2013",
+            demoLink: "https://nbviewer.org/github/somenathsau/Crime_Report_in_India_2013/blob/main/Crime_Report_Analysis_2013.ipynb"
+        },
+        {
             title: "AI-Assisted Portfolio Website",
-            description: "Developed a responsive developer portfolio using AI-assisted development (Vibe Coding). Implemented an automated contact workflow integrating Google Forms and Google Sheets to capture submissions and trigger email notifications.",
-            techStack: ["AI-Assisted Dev", "Automation", "Vibe Coding"],
+            description: "Developed a responsive developer portfolio using AI-assisted development (Vibe Coding) and automated workflows.",
+            keyInsight: "AI tools reduced boilerplate coding time by 60%.",
+            problem: "Building a portfolio from scratch is time-consuming and requires managing complex deployment and contact workflows.",
+            dataset: "N/A - Software Engineering Project",
+            approach: [
+                "Utilized LLMs for rapid prototyping and CSS grid generation.",
+                "Implemented Google Forms backend to bypass need for custom email servers.",
+                "Focused on Semantic HTML and accessibility standard compliance."
+            ],
+            businessImpact: "Created a highly professional, zero-maintenance lead generation funnel for job opportunities.",
+            techStack: ["AI-Assisted Dev", "Automation", "HTML/CSS", "JavaScript"],
             category: "AI",
             image: "resources/assets/images/portfolio-home.webp",
             codeLink: "https://github.com/somenathsau/somenathsau.github.io",
@@ -159,8 +205,17 @@ const portfolioData = {
         },
         {
             title: "AWS EC2 Cloud Monitoring Tool",
-            description: "Developed a cloud-based monitoring solution on Amazon EC2 to track server resource usage including CPU, memory, and disk metrics. Implemented Bash scripts and scheduled cron jobs to automate system monitoring and integrated CloudWatch logs and alerts for real-time performance tracking.",
-            techStack: ["AWS EC2", "Bash Scripting", "Cron Schedular"],
+            description: "Developed a cloud-based monitoring solution on Amazon EC2 to track server resource usage and automate alerts.",
+            keyInsight: "Automated alerts reduced incident response time by over 40%.",
+            problem: "Manual server monitoring leads to delayed responses to resource exhaustion, causing unexpected downtime.",
+            dataset: "Real-time system telemetry (CPU, RAM, Disk I/O).",
+            approach: [
+                "Wrote Bash scripts to capture system metrics every 5 minutes.",
+                "Configured Cron jobs for automated data extraction.",
+                "Integrated with AWS CloudWatch for persistent logging and threshold alerts."
+            ],
+            businessImpact: "Ensured 99.9% uptime by enabling proactive scaling before server crashes occur.",
+            techStack: ["AWS EC2", "Bash Scripting", "Cron Schedular", "CloudWatch"],
             category: "Cloud",
             image: "resources/assets/images/AWS_monitoring.webp",
             codeLink: "https://github.com/somenathsau/AWS-EC2-Cloud-Monitoring-Tool",

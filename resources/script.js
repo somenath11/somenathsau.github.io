@@ -7,37 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (greetingEl) greetingEl.innerHTML = "Hello, I'm";
 
     document.getElementById('heroName').textContent = portfolioData.name;
+    const heroRoleDisplay = document.getElementById('heroRoleDisplay');
+    if (heroRoleDisplay) heroRoleDisplay.textContent = portfolioData.role;
 
     const heroBioEl = document.getElementById('heroBio');
     if (heroBioEl) heroBioEl.innerHTML = portfolioData.bio;
 
-    /* COMMENTED OUT PER USER REQUEST: ROLE & SUBTITLE
-    const heroRoleEl = document.getElementById('heroRole');
-    const heroSubtitleEl = document.getElementById('heroSubtitle');
 
-    // Clear first
-    heroRoleEl.innerHTML = '';
-    heroSubtitleEl.innerHTML = '';
-
-    // Typewriter effect for role
-    const typewriterText = "Cloud & Data Engineer";
-    let charIndex = 0;
-    heroRoleEl.innerHTML = '<span class="typewriter-text"></span><span class="typewriter-cursor">|</span>';
-    const typewriterSpan = heroRoleEl.querySelector('.typewriter-text');
-    function typeWriter() {
-        if (charIndex < typewriterText.length) {
-            typewriterSpan.textContent += typewriterText.charAt(charIndex);
-            charIndex++;
-            setTimeout(typeWriter, 70);
-        } else {
-            // Blink cursor after done
-            heroRoleEl.querySelector('.typewriter-cursor').classList.add('blink');
-        }
-    }
-    typeWriter();
-
-    heroSubtitleEl.textContent = portfolioData.subtitle;
-    */
 
     // Update Hero Image
     const heroImageContainer = document.getElementById('heroImageContainer');
@@ -56,10 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Update both resume buttons
+    // Update both resume buttons
     const heroResumeBtn = document.getElementById('heroResumeBtn');
     const contactResumeBtn = document.getElementById('contactResumeBtn');
-    if (heroResumeBtn) heroResumeBtn.href = portfolioData.resumeLink;
-    if (contactResumeBtn) contactResumeBtn.href = portfolioData.resumeLink;
+    
+    const downloadResumeBtn = document.getElementById('downloadResumeBtn');
+    if (downloadResumeBtn) downloadResumeBtn.href = portfolioData.resumeLink;
 
     // Render Hero Socials (Buttons)
     const heroSocials = document.getElementById('heroSocials');
@@ -134,47 +112,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Render Education Section
     const educationGrid = document.getElementById('educationGrid');
-    portfolioData.education.forEach((edu, index) => {
-        const row = document.createElement('div');
-        row.classList.add('edu-row', 'fade-up');
-        row.style.transitionDelay = `${index * 0.1}s`;
+    if (educationGrid) {
+        portfolioData.education.forEach(edu => {
+            const card = document.createElement('div');
+            card.className = 'edu-card fade-up';
+            
+            const logoHtml = edu.logo 
+                ? `<div class="edu-logo-container"><img src="${edu.logo}" alt="${edu.badge}" class="edu-logo-img"></div>`
+                : `<div class="edu-logo-container edu-logo-initials">${edu.badge}</div>`;
 
-        const logoHtml = edu.logo 
-            ? `<img src="${edu.logo}" alt="${edu.institution}" class="edu-logo-img" loading="lazy" width="40" height="40">`
-            : `<i data-lucide="graduation-cap"></i>`;
-
-        const descHtml = edu.description ? `<li><span class="bullet-icon">⚡</span> ${edu.description}</li>` : '';
-        const gradeHtml = edu.grade ? `<li><span class="bullet-icon">⚡</span> ${edu.grade}</li>` : '';
-
-        const visitBtnHtml = edu.credentialLink 
-            ? `<div class="edu-footer"><a href="${edu.credentialLink}" target="_blank" class="edu-visit-btn">Visit Website</a></div>` 
-            : '';
-
-        row.innerHTML = `
-            <div class="edu-card-split">
-                <div class="edu-left-panel">
-                    <div class="edu-logo-circle">
-                        ${logoHtml}
+            card.innerHTML = `
+                <div class="edu-card-top">
+                    ${logoHtml}
+                    <div class="edu-header-right">
+                        <div class="edu-inst">${edu.institution}</div>
+                        <div class="edu-years">${edu.years}</div>
                     </div>
-                    <div class="edu-short-name">${edu.shortName}</div>
                 </div>
-                <div class="edu-right-content">
-                    <div class="edu-right-header">
-                        <h3 class="edu-institution-full">${edu.institution}</h3>
-                        <span class="edu-date-pill">${edu.year}</span>
+                <h3 class="edu-degree">${edu.degree}</h3>
+                <div class="edu-location">${edu.location}</div>
+                <hr class="edu-divider">
+                <div class="edu-score-section">
+                    <div class="edu-score-left">
+                        <div class="edu-score-num">${edu.score}</div>
+                        <div class="edu-score-label">${edu.scoreLabel}</div>
                     </div>
-                    <h4 class="edu-degree-subtitle">${edu.title}</h4>
-                    <div class="edu-content-divider"></div>
-                    <ul class="edu-bullets">
-                        ${descHtml}
-                        ${gradeHtml}
-                    </ul>
-                    ${visitBtnHtml}
+                    <div class="edu-tag">${edu.tag}</div>
                 </div>
-            </div>
-        `;
-        educationGrid.appendChild(row);
-    });
+                <p class="edu-desc">${edu.description}</p>
+                <a href="${edu.website}" target="_blank" class="btn-primary edu-cta">Visit Website</a>
+            `;
+            educationGrid.appendChild(card);
+        });
+    }
 
     // 4. Render Experience Section
     const experienceTimeline = document.getElementById('experienceTimeline');
@@ -207,35 +177,32 @@ document.addEventListener('DOMContentLoaded', () => {
         sortedExperience.forEach((exp, index) => {
             const item = document.createElement('div');
             item.classList.add('timeline-item', 'fade-up');
+            item.style.transitionDelay = `${index * 0.1}s`;
 
             const metricsHtml = exp.metrics ? exp.metrics.map(m => `
-                <div class="exp-stat-box">
-                    <span class="stat-val">${m.val}</span>
-                    <span class="stat-label">${m.label}</span>
-                </div>
+                <div class="exp-metric-pill">${m.val} ${m.label}</div>
             `).join('') : '';
 
             const tagsHtml = exp.techStack ? exp.techStack.map(t => `
-                <span class="exp-tag">${t}</span>
+                <span class="exp-skill-tag">${t}</span>
             `).join('') : '';
 
             item.innerHTML = `
                 <div class="timeline-dot"></div>
-                <div class="timeline-content glass-card">
-                    <div class="exp-header">
-                        <h3 class="exp-role">${exp.role}</h3>
-                        <span class="exp-type-badge">${exp.type}</span>
+                <div class="exp-card">
+                    <div class="exp-header-row">
+                        <h3 class="exp-role-title">${exp.role}</h3>
+                        <span class="exp-status-badge">${exp.type}</span>
                     </div>
-                    <p class="exp-subheader">${exp.company} | ${exp.location || 'Remote'}</p>
-                    <span class="exp-duration">${exp.duration}</span>
-                    
-                    <div class="exp-metrics">
+                    <div class="exp-subtext-row">
+                        ${exp.company} · ${exp.location || 'Remote'} · ${exp.duration}
+                    </div>
+                    <div class="exp-metrics-row">
                         ${metricsHtml}
                     </div>
-
-                    <p class="exp-desc">${exp.description}</p>
-                    
-                    <div class="exp-tags">
+                    <hr class="exp-divider">
+                    <p class="exp-description-text">${exp.description}</p>
+                    <div class="exp-skill-tags">
                         ${tagsHtml}
                     </div>
                 </div>
@@ -248,42 +215,134 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const projectsGrid = document.getElementById('projectsGrid');
     if (projectsGrid) {
-        // Change grid to rows container class
-        projectsGrid.className = 'projects-rows';
-        projectsGrid.innerHTML = ''; // Clear initial content
+        projectsGrid.className = 'projects-grid-2col';
+        projectsGrid.innerHTML = ''; 
         
         portfolioData.projects.forEach((project, index) => {
-            const row = document.createElement('div');
-            row.classList.add('project-row', 'fade-up');
-            row.style.transitionDelay = `${index * 0.1}s`;
+            const card = document.createElement('div');
+            card.classList.add('project-card-v2', 'fade-up');
+            card.style.transitionDelay = `${index * 0.1}s`;
 
-            const techPillsHtml = project.techStack.map(tech => `<span class="project-tech-tag">${tech}</span>`).join('');
+            const techPillsHtml = project.techStack.map(tech => `<span>${tech}</span>`).join('');
+            
+            const insightHtml = project.keyInsight 
+                ? `<div class="project-insight"><i data-lucide="zap"></i> ${project.keyInsight}</div>` 
+                : '';
 
-            const catSlug = project.category.toLowerCase().replace(/\s+/g, '-');
-
-            row.innerHTML = `
-                <div class="project-image-box">
-                    <img src="${project.image}" alt="${project.title}" class="project-img" loading="lazy" width="500" height="300">
+            card.innerHTML = `
+                <div class="project-card-image">
+                    <img src="${project.image}" alt="${project.title}" loading="lazy">
                 </div>
-                <div class="project-details-box">
-                    ${project.category ? `<span class="project-category-tag cat-${catSlug}">${project.category}</span>` : ''}
+                <div class="project-card-content">
                     <h3 class="project-title">${project.title}</h3>
-                    <div class="project-tech-tags">
-                        ${techPillsHtml}
-                    </div>
-                    <p class="project-description">${project.description}</p>
-                    <div class="project-actions">
-                        <a href="${project.codeLink}" class="btn-code" target="_blank">
-                            <i data-lucide="github"></i> Code
-                        </a>
-                        <a href="${project.demoLink}" class="btn-demo" target="_blank">
-                            <i data-lucide="external-link"></i> Live Demo
-                        </a>
+                    ${insightHtml}
+                    <p class="project-desc">${project.description}</p>
+                    <div class="tech-stack-v2">${techPillsHtml}</div>
+                    <div class="project-card-actions">
+                        <button class="btn-primary open-modal-btn" data-index="${index}">View Case Study</button>
+                        <a href="${project.codeLink}" class="btn-secondary" target="_blank"><i data-lucide="github"></i> Code</a>
                     </div>
                 </div>
             `;
-            projectsGrid.appendChild(row);
+            projectsGrid.appendChild(card);
         });
+
+        // Modal Logic
+        // Project Modal Logic
+        const modal = document.getElementById('projectModal');
+        const closeBtn = document.getElementById('modalCloseBtn');
+        
+        // Resume Modal Logic
+        const resumeModal = document.getElementById('resumeModal');
+        const resumeCloseBtn = document.getElementById('resumeModalCloseBtn');
+        const resumeIframe = document.getElementById('resumeIframe');
+
+        // Open Resume Modal
+        document.querySelectorAll('.open-resume-modal').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (resumeModal && resumeIframe) {
+                    resumeIframe.src = portfolioData.resumeLink;
+                    resumeModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close Resume Modal
+        if (resumeCloseBtn && resumeModal) {
+            resumeCloseBtn.addEventListener('click', () => {
+                resumeModal.classList.remove('active');
+                resumeIframe.src = ''; // Clear src to stop any loading
+                document.body.style.overflow = '';
+            });
+
+            resumeModal.addEventListener('click', (e) => {
+                if (e.target === resumeModal) {
+                    resumeModal.classList.remove('active');
+                    resumeIframe.src = '';
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        if (modal && closeBtn) {
+            // Open Modal
+            document.querySelectorAll('.open-modal-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const idx = e.currentTarget.getAttribute('data-index');
+                    const proj = portfolioData.projects[idx];
+                    
+                    document.getElementById('modalTitle').textContent = proj.title;
+                    document.getElementById('modalImage').src = proj.image;
+                    
+                    document.getElementById('modalProblem').textContent = proj.problem || 'N/A';
+                    document.getElementById('modalDataset').textContent = proj.dataset || 'N/A';
+                    document.getElementById('modalImpact').textContent = proj.businessImpact || 'N/A';
+                    
+                    const insightEl = document.getElementById('modalKeyInsight');
+                    insightEl.textContent = proj.keyInsight || 'N/A';
+                    
+                    const approachList = document.getElementById('modalApproach');
+                    approachList.innerHTML = proj.approach 
+                        ? proj.approach.map(step => `<li>${step}</li>`).join('')
+                        : '<li>N/A</li>';
+                        
+                    const toolsContainer = document.getElementById('modalTools');
+                    toolsContainer.innerHTML = proj.techStack.map(t => `<span class="modal-tech-badge">${t}</span>`).join('');
+                    
+                    document.getElementById('modalCodeLink').href = proj.codeLink;
+                    document.getElementById('modalDemoLink').href = proj.demoLink;
+                    
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    lucide.createIcons();
+                });
+            });
+
+            // Image Expansion Toggle
+            document.querySelectorAll('.modal-image-wrapper').forEach(wrapper => {
+                wrapper.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    wrapper.classList.toggle('expanded');
+                });
+            });
+            
+            // Close Modal Function
+            const closeModal = () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                // Reset image expanded states
+                document.querySelectorAll('.modal-image-wrapper').forEach(w => w.classList.remove('expanded'));
+            };
+            
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+            });
+        }
     }
 
     // 6. Render Skills Section (Redesigned with Hierarchy)
