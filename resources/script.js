@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.style.transitionDelay = `${index * 0.1}s`;
 
             const metricsHtml = exp.metrics ? exp.metrics.map(m => `
-                <div class="refined-exp-metric">${m.val} ${m.label}</div>
+                <span class="refined-exp-metric"><span class="metric-dot">•</span><span class="metric-text">${m.val} ${m.label}</span></span>
             `).join('') : '';
 
             const tagsHtml = exp.techStack ? exp.techStack.map(t => `
@@ -191,24 +191,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="timeline-dot"></div>
                 <div class="refined-exp-card">
                     <div class="refined-exp-header">
-                        <div class="refined-exp-header-left">
-                            <h3 class="refined-exp-title">${exp.role}</h3>
-                            <p class="refined-exp-company">${exp.company} <span class="muted-dot">·</span> ${exp.location || 'Remote'}</p>
-                        </div>
-                        <div class="refined-exp-header-right">
-                            <span class="refined-exp-badge">${exp.type}</span>
-                            <p class="refined-exp-date">${exp.duration}</p>
+                        <div class="exp-header-content">
+                            <div class="exp-header-top">
+                                <div class="exp-title-wrapper">
+                                    <h3 class="refined-exp-title">${exp.role}</h3>
+                                </div>
+                                <span class="refined-exp-badge">${exp.type}</span>
+                            </div>
+                            <div class="exp-header-bottom">
+                                <p class="refined-exp-company">${exp.company} <span class="muted-dot">·</span> ${exp.location || 'Remote'}</p>
+                                <p class="refined-exp-date">${exp.duration}</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="refined-exp-metrics">
-                        ${metricsHtml}
-                    </div>
-                    
-                    <p class="refined-exp-description">${exp.description}</p>
-                    
-                    <div class="refined-exp-skills">
-                        ${tagsHtml}
+                    <div class="refined-exp-body">
+                        <div class="refined-exp-metrics">
+                            ${metricsHtml}
+                        </div>
+                        
+                        <p class="refined-exp-description">${exp.description}</p>
+                        
+                        <div class="refined-exp-skills">
+                            ${tagsHtml}
+                        </div>
                     </div>
                 </div>
             `;
